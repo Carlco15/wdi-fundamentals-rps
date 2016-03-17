@@ -1,10 +1,10 @@
 ////////////////////////////////////////////////
 /*   Provided Code - Please Don't Edit   */
 ////////////////////////////////////////////////
-'use strict';
+
 
 function getInput() {
-    console.log("Please choose either 'rock', 'paper', or 'scissors'.")
+    console.log("Please choose either 'rock', 'paper', or 'scissors'.");
     return prompt();
 }
 function randomPlay() {
@@ -52,7 +52,7 @@ function getWinner(playerMove,computerMove) {
         winner = 'player';
     } else if (playerMove === 'scissors' && computerMove === 'rock') {
         winner = 'computer';
-    } else {
+    } else if (playerMove === computerMove){
         winner = 'tie';
     }
     return winner;
@@ -64,6 +64,26 @@ function playToFive() {
     var computerWins = 0;
     // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
     /* YOUR CODE HERE */
+    while (playerWins < 5 && computerWins < 5) {
+        var playerMove = getPlayerMove();
+        var computerMove = getComputerMove();
+        var winner = getWinner(playerMove,computerMove);
+        if (winner === 'player') {
+            playerWins += 1;
+            console.log('This rounds winner is ' + winner);
+            console.log('Player chose ' + playerMove + ' while Computer chose ' + computerMove);
+            console.log('The current score is Player - ' + playerWins + ' Computer - ' + computerWins);
+        } else if (winner === 'computer') {
+            computerWins += 1;
+            console.log('This rounds winner is ' + winner);
+            console.log('Player chose ' + playerMove + ' while Computer chose ' + computerMove);
+            console.log('The current score is Player - ' + playerWins + ' Computer - ' + computerWins);
+        } else {
+            console.log('This rounds winner is ' + winner);
+            console.log('Player chose ' + playerMove + ' while Computer chose ' + computerMove);
+            console.log('The current score is Player - ' + playerWins + ' Computer - ' + computerWins);
+        }
+    }
     return [playerWins, computerWins];
 }
-
+playToFive(5);
